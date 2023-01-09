@@ -68,7 +68,12 @@ const display = () => {
   }
   
 }
-
+const removedisplay = () => {
+  let element = document.querySelector(".fruits__list");
+while (element.firstChild) {
+  element.removeChild(element.firstChild);
+}
+}
 
 display();
 
@@ -105,6 +110,7 @@ fruits = result;
 };
 
 shuffleButton.addEventListener('click', () => {
+  removedisplay();
   shuffleFruits();
   display();
   });
@@ -126,6 +132,7 @@ if ( parseInt(minweight.value) > parseInt(maxweight.value) || minweight.value=="
    alert(`Диапазон заначений введен не корректно.\n Введите значения правильно!`);
    filter == false ;
 } else{
+  removedisplay();
     filterFruits();
     display();
     }
@@ -233,6 +240,7 @@ sortActionButton.addEventListener('click', () => {
   sortKindLabel.textContent = sortKind;
    const sort = sortAPI[sortKind];
   sortAPI.startSort(sort, fruits, comparationColor);
+  removedisplay();
   display();
   sortTimeLabel.textContent = sortTime;
   
@@ -242,6 +250,7 @@ sortActionButton.addEventListener('click', () => {
 addActionButton.addEventListener('click', () => {
   if(kindInput.value && colorInput.value && weightInput.value){
   fruits.push({"kind": `${kindInput.value}`, "color": `${colorInput.value}`, "weight": `${weightInput.value}`})
+  removedisplay();
   display();
   
   } else {alert( `Проверьте заполнение полей!`)}
